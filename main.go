@@ -14,7 +14,7 @@ import (
 func main() {
 	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
-	err := godotenv.Load("./test_slack.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal().Msg("Error loading .env file")
 	}
@@ -42,5 +42,4 @@ func main() {
 	controllers.NewSlashCommandController(socketmodeHandler)
 
 	socketmodeHandler.RunEventLoop()
-
 }
